@@ -9,28 +9,65 @@ function computerPlay() {
 
 //simulation of one round
 function playRound(playerSelection, computerSelection) {
-    computerSelection = computerPlay()
-    do {
-        var playerDecision = prompt("What is your decision?")
-        var playerCheck = playerDecision.toLowerCase()
-        playerSelection = playerCheck
-        var tiegame = playerSelection.charAt(0).toUpperCase()+playerSelection.slice(1)
-
-    }
-    while (playerCheck != "rock" && playerCheck != "scissors" && playerCheck != "paper");
+    var playerCheck = playerSelection.toLowerCase()
     
-    if (playerSelection == computerSelection)
-        return ("Tie game! You both selected " + tiegame)
-    else if (playerSelection == "paper" && computerSelection == "rock")
-        return ("You win! Paper beats Rock!")
-    else if (playerSelection == "paper" && computerSelection == "scissors")
-        return ("You lose! Scissors beats Paper!")
-    else if (playerSelection == "scissors" && computerSelection == "rock")
-        return ("You lose! Rock beats Scissors!")
-    else if (playerSelection == "scissors" && computerSelection == "paper")
-        return ("You win! Scissors beats Paper!")
-    else if (playerSelection == "rock" && computerSelection == "paper")
-        return ("You lose! Paper beats Rock!")
-    else (playerSelection == "rock" && computerSelection == "scissors")
-        return ("You win! Rock beats Scissors!")
+    if (playerCheck == computerSelection) {
+        return 0
+    }
+    else if (playerCheck == "paper" && computerSelection == "rock"){
+        return 1
+    }
+    else if (playerCheck == "paper" && computerSelection == "scissors"){
+        return 2
+        }
+    else if (playerCheck == "scissors" && computerSelection == "rock"){
+        return 2
+        }
+    else if (playerCheck== "scissors" && computerSelection == "paper"){
+        return 1
+    }
+    else if (playerCheck == "rock" && computerSelection == "paper"){
+        return 2
+        }
+    else (playerCheck == "rock" && computerSelection == "scissors")
+        return 1
+}
+
+//simulates 5 rounds of a game, best of 5
+function game(){
+    var playerSelection
+    var computerSelection
+    var result 
+    var userScore = 0
+    var computerScore = 0
+
+    //loop for rounds
+    for (let i = 0; i < 5; i++) {
+        var round = i + 1
+        playerSelection = prompt("What is your decision?")
+        computerSelection = computerPlay()
+        result = (playRound(playerSelection, computerSelection))
+        var compCapitalize = computerSelection.charAt(0).toUpperCase()+computerSelection.slice(1)
+        var playerCheck = playerSelection.toLowerCase()
+        var tiegame = playerCheck.charAt(0).toUpperCase()+playerCheck.slice(1)
+        console.log("Round " + round)
+        if (result == 1){
+            userScore++
+            console.log("You win! " + tiegame + " beats " + compCapitalize + "!")
+        }
+        else if (result == 2){
+            computerScore++
+            console.log("You lose! " + compCapitalize + " beats " + tiegame + "!")
+        }
+        else if (result == 0)
+            console.log("Tie game! you both picked " + tiegame + "!")
+     }
+     //displays score after 5 rounds
+     if (userScore > computerScore)
+        console.log("You win after 5 rounds with a score of " + userScore + " to the computer's " + computerScore)
+    else if (userScore < computerScore)
+        console.log("You lost after 5 rounds with a score of " + userScore + " to the computer's " + computerScore)
+    else if (userScore == computerScore)
+        console.log("You drew after 5 rounds with a score of " + userScore + " to the computer's " + computerScore)
+
 }
