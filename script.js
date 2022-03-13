@@ -2,16 +2,17 @@
 
 var computerScore = 0
 var playerScore = 0
+var WonLost
 
 const results = document.querySelector(".results")
 const winner = document.createElement("div")
 const content = document.createElement("div")
-const playerResults = document.createElement("div")
-const computerResults = document.createElement("div")
+const playerResults = document.createElement("span")
+const computerResults = document.createElement("span")
 
 //keeps track of scores and updates in real time
 function keepingScore(){
-    playerResults.textContent = "Player score: " + playerScore 
+    playerResults.textContent = "Player score: " + playerScore + "  "
     computerResults.textContent = "Computer score: " + computerScore
     results.appendChild(playerResults)
     results.appendChild(computerResults)
@@ -123,3 +124,18 @@ const scissors = document.querySelector("#scissors")
 scissors.addEventListener("click", () => {
     playRound("scissors")
 })
+
+//typing animation
+var i = 0;
+var txt = 'Rock, Paper, or Scissors?'; /* The text */
+var speed = 80; /* The speed/duration of the effect in milliseconds */
+
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("title").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+
+typeWriter()
