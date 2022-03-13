@@ -5,19 +5,19 @@ var playerScore = 0
 var WonLost
 
 const results = document.querySelector(".results")
+const container = document.querySelector(".container")
 const displayBoxesComputer = document.querySelector(".scoreComputer")
 const displayBoxesPlayer = document.querySelector(".scorePlayer")
 const winner = document.createElement("div")
 const content = document.createElement("div")
 const playerResults = document.createElement("span")
 const computerResults = document.createElement("span")
+const playAgain = document.createElement("a")
 
 //keeps track of scores and updates in real time
 function keepingScore(){
     displayBoxesPlayer.textContent = playerScore
     displayBoxesComputer.textContent = computerScore
-    // results.appendChild(playerResults)
-    // results.appendChild(computerResults)
 }
 
 keepingScore()
@@ -32,6 +32,8 @@ function theWinner() {
         rock.remove("#rock")
         paper.remove("#paper")
         scissors.remove("#scissors")
+
+
     }
     else if (computerScore == 5) {
         winner.textContent = "You lost with a score of " + playerScore + " to the computer's " + computerScore
@@ -73,7 +75,7 @@ function playRound(playerSelection, computerSelection) {
     else if (playerCheck == "paper" && computerSelection == "scissors"){
         computerScore++
         keepingScore()
-        content.textContent = "You lost! Scissors beats Paper"
+        content.textContent = "You lost! Scissors beats Paper!"
         results.appendChild(content)
         theWinner()
         return
@@ -81,7 +83,7 @@ function playRound(playerSelection, computerSelection) {
     else if (playerCheck == "scissors" && computerSelection == "rock"){
         computerScore++
         keepingScore()
-        content.textContent = "You lost! Rock beats Scissors"
+        content.textContent = "You lost! Rock beats Scissors!"
         results.appendChild(content)
         theWinner()
         return
