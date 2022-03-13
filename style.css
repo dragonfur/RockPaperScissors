@@ -44,9 +44,24 @@ button:hover {
     gap: 48px;
 }
 
+#boxes {
+    display: flex;
+    justify-content: space-between;
+    gap: 200px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.playerBox,
+.computerBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .results {
     text-align: center;
-    
 }
 
 #header-image {

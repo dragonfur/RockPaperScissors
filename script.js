@@ -5,6 +5,8 @@ var playerScore = 0
 var WonLost
 
 const results = document.querySelector(".results")
+const displayBoxesComputer = document.querySelector(".scoreComputer")
+const displayBoxesPlayer = document.querySelector(".scorePlayer")
 const winner = document.createElement("div")
 const content = document.createElement("div")
 const playerResults = document.createElement("span")
@@ -12,10 +14,10 @@ const computerResults = document.createElement("span")
 
 //keeps track of scores and updates in real time
 function keepingScore(){
-    playerResults.textContent = "Player score: " + playerScore + "  "
-    computerResults.textContent = "Computer score: " + computerScore
-    results.appendChild(playerResults)
-    results.appendChild(computerResults)
+    displayBoxesPlayer.textContent = playerScore
+    displayBoxesComputer.textContent = computerScore
+    // results.appendChild(playerResults)
+    // results.appendChild(computerResults)
 }
 
 keepingScore()
